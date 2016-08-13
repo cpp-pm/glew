@@ -32,6 +32,11 @@ add_library(glew ${glew_sources} ${glew_headers})
 find_package(OpenGL REQUIRED)
 target_link_libraries(glew PUBLIC ${OPENGL_LIBRARIES})
 
+if(NOT APPLE AND UNIX)
+  find_package(X11 REQUIRED)
+  target_link_libraries(glew PUBLIC ${X11_X11_LIB})
+endif()
+
 target_compile_definitions(glew PUBLIC GLEW_BUILD GLEW_NO_GLU)
 target_include_directories(glew PUBLIC "$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include>")
 
