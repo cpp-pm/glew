@@ -79,7 +79,9 @@ set(generated_dir "${CMAKE_CURRENT_BINARY_DIR}/generated")
 set(version_config "${generated_dir}/${PROJECT_NAME}ConfigVersion.cmake")
 set(project_config "${generated_dir}/${PROJECT_NAME}Config.cmake")
 set(targets_export_name "${PROJECT_NAME}Targets")
-set(namespace "${PROJECT_NAME}::")
+# namespace disabled in glew for emscripten compatibility
+# see https://github.com/ruslo/hunter/pull/488#issuecomment-239634989
+#set(namespace "${PROJECT_NAME}::")
 
 include(CMakePackageConfigHelpers)
 
@@ -114,6 +116,7 @@ install(
 
 install(
     EXPORT "${targets_export_name}"
-    NAMESPACE "${namespace}"
+# No namespace for glew
+#    NAMESPACE "${namespace}"
     DESTINATION "${config_install_dir}"
 )
