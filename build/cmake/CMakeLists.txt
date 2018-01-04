@@ -46,7 +46,7 @@ endif ()
 find_package (OpenGL REQUIRED)
 find_package (X11)
 
-set (GLEW_LIBRARIES ${OPENGL_LIBRARIES})
+set (GLEW_LIBRARIES OpenGL::GL)
 
 add_definitions (-DGLEW_NO_GLU)
 
@@ -71,7 +71,7 @@ if (GLEW_OSMESA)
     set (OSMESA_LIB_NAME OSMesa)
   endif ()
   add_definitions (-DGLEW_OSMESA)
-  set (GLEW_LIBRARIES ${OSMESA_LIB_NAME} ${OPENGL_LIBRARIES})
+  set (GLEW_LIBRARIES ${OSMESA_LIB_NAME} OpenGL::GL)
   set (X11_LIBRARIES)
 endif ()
 

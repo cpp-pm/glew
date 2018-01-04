@@ -7,8 +7,7 @@ find_package(OpenGL REQUIRED)
 
 add_executable(cmake-test main.c)
 set_target_properties(cmake-test PROPERTIES DEBUG_POSTFIX _d)
-target_link_libraries(cmake-test PRIVATE GLEW::GLEW ${OPENGL_LIBRARIES})
-target_include_directories(cmake-test PRIVATE ${OPENGL_INCLUDE_DIR})
+target_link_libraries(cmake-test PRIVATE GLEW::GLEW OpenGL::GL)
 
 if(CMAKE_VERSION VERSION_LESS 3.0)
     set(cgex $<CONFIGURATION>)

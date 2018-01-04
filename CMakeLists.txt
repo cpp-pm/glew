@@ -3,7 +3,7 @@
 # https://github.com/forexample/package-example/
 # With some logic taken from the original glew's CMakeLists.txt in build/cmake
 
-cmake_minimum_required(VERSION 3.0)
+cmake_minimum_required(VERSION 3.8) # OpenGL::GL
 
 include("cmake/HunterGate.cmake")
 
@@ -38,7 +38,7 @@ endif()
 add_library(glew ${glew_sources} ${glew_headers})
 
 find_package(OpenGL REQUIRED)
-target_link_libraries(glew PUBLIC ${OPENGL_LIBRARIES})
+target_link_libraries(glew PUBLIC OpenGL::GL)
 
 if(NOT APPLE AND UNIX)
   hunter_add_package(x11)
